@@ -1,5 +1,6 @@
 package com.example.realestate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.realestate.adapters.RoomAdapter
@@ -26,6 +27,15 @@ class MainActivity : AppCompatActivity() {
 
         mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, mRoomList)
         binding.roomListview.adapter = mRoomAdapter
+        
+        binding.roomListview.setOnItemClickListener { parent, view, position, id ->
+            //클릭된 아이템 위치 체크
+            val clickedRoom = mRoomList[position]
+
+            val myIntent = Intent(this,ViewRoomDetailActivity::class.java)
+            myIntent.putExtra("room", clickedRoom)
+            startActivity(myIntent)
+        }
 
     }
 }

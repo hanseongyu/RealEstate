@@ -1,5 +1,6 @@
 package com.example.realestate.datas
 
+import java.io.Serializable
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -7,7 +8,7 @@ class Room(
     val price: Int,
     val address: String,
     val floor: Int,
-    val descrription: String) {
+    val descrription: String) : Serializable {
 
     fun getFormattedPrice():String{
         if (this.price >= 10000){
@@ -33,5 +34,7 @@ class Room(
             return "지하 ${-this.floor}층"
         }
     }
+
+
 
 }
